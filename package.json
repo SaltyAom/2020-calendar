@@ -1,0 +1,16 @@
+{
+  "name": "2020",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "snowpack dev",
+    "build": "snowpack build"
+  },
+  "devDependencies": {
+    "snowpack": "^2.18.5"
+  },
+  "dependencies": {
+    "dayjs": "^1.9.8"
+  }
+}
