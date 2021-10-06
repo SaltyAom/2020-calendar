@@ -1,14 +1,31 @@
-import day from 'dayjs'
+const id = (id: string) => document.getElementById(id)
 
-const id = (id) => document.getElementById(id)
+const dateDiff = (since: Date, then: Date): number => {
+	const timeDiff = then.getTime() - since.getTime()
+	return Math.floor(timeDiff / (24 * 3600 * 1000))
+}
 
-document.addEventListener('DOMContentLoaded', () => {
-	const since = day('2020-12-31', 'YYYY-MM-DD'),
-		then = day(),
-        diff = then.diff(since, 'day')
+const day = [
+	'Sunday',
+	'Monday',
+	'Tuesday',
+	'Wednesday',
+	'Thurday',
+	'Friday',
+	'Saturday'
+] as const
 
-    id('day').textContent = String(31 + diff)
-    id('date').textContent = String(then.format('dddd'))
-}, {
-    once: true
-})
+document.addEventListener(
+	'DOMContentLoaded',
+	() => {
+		const since = new Date('2020-12-31')
+		const then = new Date()
+		const diff = dateDiff(since, then)
+
+		id('day').textContent = (31 + diff).toString()
+		id('date').textContent = day[then.getDay()]
+	},
+	{
+		once: true
+	}
+)
